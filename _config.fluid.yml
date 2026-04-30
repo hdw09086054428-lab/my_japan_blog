@@ -1,0 +1,81 @@
+# ============================
+# 导航栏（深圳主题）
+# ============================
+navbar:
+  blog_title: "日本生活の老黄日記 || 日本生活的老黄日记"
+  menu:
+    - name: "ホーム || 首页"
+      link: "/"
+      icon: "iconfont icon-home-fill"
+    
+    - name: "言語 || 语言"
+      icon: "iconfont icon-translation"
+      link: "javascript:switchLangBtn();"
+
+
+# ============================
+# 主题色（和纸白 × 墨色 × 胭脂）
+# ============================
+color:
+  body_bg_color: "#FAF9F7"          # 和纸白
+  body_bg_color_dark: "#181c27"
+
+  navbar_bg_color: "#2C2C2C"        # 墨色
+  navbar_bg_color_dark: "#1f3144"
+
+  navbar_text_color: "#FFFFFF"      # 白
+  navbar_text_color_dark: "#d0d0d0"
+
+  text_color: "#2C2C2C"             # 墨色
+  text_color_dark: "#c4c6c9"
+
+  post_heading_color: "#2C2C2C"
+  post_heading_color_dark: "#c4c6c9"
+
+  post_link_color: "#3A4A5A"        # 墨蓝
+  post_link_color_dark: "#1589e9"
+
+  link_hover_color: "#C04851"       # 胭脂
+  link_hover_color_dark: "#C04851"
+
+  board_color: "#FFFFFF"
+  board_color_dark: "#252d38"
+
+
+# ============================
+# 字体（Noto Serif JP × 思源宋体）
+# ============================
+font:
+  font_family: "'Noto Serif JP', 'Source Han Serif SC', serif"
+  font_size: 16px
+  letter_spacing: 0.02em
+  code_font_size: 85%
+
+
+# ============================
+# 首页 Banner（深圳 × 淡墨山峦）
+# ============================
+index:
+  banner_img: /img/banner_shenzhen.jpg     # 你将放置的深圳 Banner
+  banner_img_cn: /img/banner_shenzhen.jpg
+  banner_img_height: 80
+  banner_mask_alpha: 0.2
+
+  slogan:
+    enable: true
+    text: "静雅な東方都市・深圳の物語 || 静雅东方都市・深圳的故事"
+    typed: false       # アニメーションを有効にする
+
+# ============================
+# 懒加载
+# ============================
+lazyload:
+  enable: true
+  loading_img: /img/loading.gif
+
+
+# ============================
+# 页脚
+# ============================
+footer:
+  content: '© 2026 日記｜日中文化交流ブログ || © 2026 日记｜中日文化交流博客'

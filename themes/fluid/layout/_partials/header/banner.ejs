@@ -1,0 +1,82 @@
+<%
+/*
+ DaWei 专用：Fluid 多语言 Banner（首页 + 文章页）
+ --------------------------------------------------
+ 语言切换逻辑：
+ - EJS 阶段不读取 window/localStorage（避免 SSR 错误）
+ - 只输出 data-jp / data-cn
+ - JS 在浏览器端根据 localStorage 切换背景图
+*/
+
+// 首页 Banner（来自主题配置）
+const indexJP = theme.index.banner_img;
+const indexCN = theme.index.banner_img_cn || theme.index.banner_img;
+
+// 文章封面（来自 front-matter）
+const coverJP = page.cover_jp;
+const coverCN = page.cover_cn;
+
+// 默认封面
+const defaultJP = '/img/default_cover_jp.jpg';
+const defaultCN = '/img/default_cover_cn.jpg';
+
+// Fluid 原版逻辑：先决定初始 banner_img（默认显示日文）
+let banner_img = '';
+
+if (is_home()) {
+  banner_img = indexJP;
+} else if (coverJP || coverCN) {
+  banner_img = coverJP || defaultJP;
+} else {
+  banner_img = defaultJP;
+}
+
+var banner_img_height = parseFloat(page.banner_img_height || theme.index.banner_img_height);
+var banner_mask_alpha = parseFloat(page.banner_mask_alpha || theme.index.banner_mask_alpha);
+
+// ★★ DaWei 修正版：subtitle 来源（首页 → slogan.text）
+var subtitle = page.subtitle || page.title || theme.index.slogan.text;
+%>
+
+<div id="banner" class="banner"
+     data-jp="<%- url_for(is_home() ? indexJP : (coverJP || defaultJP)) %>"
+     data-cn="<%- url_for(is_home() ? indexCN : (coverCN || defaultCN)) %>"
+     style="background: url('<%- url_for(banner_img) %>') no-repeat center center; background-size: cover;">
+
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, <%= banner_mask_alpha %>)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+
+          <!-- ★★ 强制关闭 Fluid typing，始终输出纯文本 -->
+          <span id="subtitle"><%- subtitle %></span>
+
+        </div>
+
+        <!-- ★★ DaWei 要求：文章页不显示任何 meta，完全移除 -->
+        <!-- （原本是 is_post() 时注入 postMetaTop，这里彻底删除） -->
+
+      </div>
+
+      <% if (theme.scroll_down_arrow.enable && theme.scroll_down_arrow.banner_height_limit <= banner_img_height && page.layout !== '404') { %>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<script>
+// DaWei 多语言 Banner 切换（浏览器端执行）
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('site-lang') || 'ja';
+  const banner = document.getElementById('banner');
+  if (!banner) return;
+
+  const jp = banner.dataset.jp;
+  const cn = banner.dataset.cn;
+
+  banner.style.backgroundImage = `url('${lang === 'ja' ? jp : cn}')`;
+});
+</script>
