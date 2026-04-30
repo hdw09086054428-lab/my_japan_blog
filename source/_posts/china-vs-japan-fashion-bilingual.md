@@ -1,6 +1,7 @@
 ---
 title: 同じ服、なぜ中国製は安くて品質も高いのか？ || 同样的衣服，为什么中国制又便宜质量又好？
 date: 2026-04-28
+toc: false
 cover_jp: /img/cover_china_japan_fashion_jp.jpg
 cover_cn: /img/cover_china_japan_fashion_cn.jpg
 tags: 
