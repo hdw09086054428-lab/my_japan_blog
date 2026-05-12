@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hdw09086054428-lab.github.io/my_japan_blog/sitemap.xml
