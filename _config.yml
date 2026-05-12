@@ -103,3 +103,10 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+sitemap:
+  path: sitemap.xml
+robotstxt:
+  useragent: "*"
+  allow:
+    - /
+  sitemap: https://hdw09086054428-lab.github.io/my_japan_blog/sitemap.xml
